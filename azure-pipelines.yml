@@ -26,6 +26,11 @@ steps:
     configSource: 'taskConfiguration'
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
+- task: JFrogPublishBuildInfo@1
+  inputs:
+    artifactoryConnection: 'Cloud Instance'
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
 
 
 
