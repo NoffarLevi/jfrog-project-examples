@@ -10,21 +10,16 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: JFrogMaven@1
+- task: JFrogDotnetCore@1
   inputs:
-    mavenPomFile: 'maven-examples/maven-example/pom.xml'
-    goals: 'clean install'
-    artifactoryResolverService: 'Cloud Instance'
-    targetResolveReleaseRepo: 'noffarl-azurepl-libs-release'
-    targetResolveSnapshotRepo: 'noffarl-azurepl-libs-snapshot'
-    artifactoryDeployService: 'Cloud Instance'
-    targetDeployReleaseRepo: 'noffarl-azurepl-libs-release'
-    targetDeploySnapshotRepo: 'noffarl-azurepl-libs-snapshot'
+    command: 'restore'
+    artifactoryConnection: 'Cloud Instance'
+    targetResolveRepo: 'noffarl-azurepl-nuget'
+    rootPath: 'project-examples/dotnet-examples/single-example/**/*.csproj'
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
-- task: JFrogPublishBuildInfo@1
-  inputs:
-    artifactoryConnection: 'Cloud Instance'
-    buildName: '$(Build.DefinitionName)'
-    buildNumber: '$(Build.BuildNumber)'
+    includeEnvVars: true
+
+
+
