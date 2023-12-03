@@ -20,6 +20,12 @@ steps:
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
     includeEnvVars: true
+- task: JFrogCollectIssues@1
+  inputs:
+    artifactoryConnection: 'Cloud Instance'
+    configSource: 'taskConfiguration'
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
 
 
 
