@@ -15,7 +15,7 @@ steps:
     command: 'restore'
     artifactoryConnection: 'Cloud Instance'
     targetResolveRepo: 'noffarl-azurepl-nuget'
-    rootPath: 'project-examples/dotnet-examples/single-example/**/*.csproj'
+    rootPath: 'dotnet-examples/single-example/**/*.csproj'
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
