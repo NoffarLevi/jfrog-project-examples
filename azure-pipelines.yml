@@ -16,7 +16,6 @@ steps:
     git add .
     git commit -m "Move azure-pipelines.yml to specific folder"
     git push origin $(Build.SourceBranch)
-    displayName: 'Move and push azure-pipelines.yml'
 - task: JFrogDotnetCore@1
   inputs:
     command: 'restore'
