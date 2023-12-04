@@ -10,12 +10,6 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- checkout: self
-- script: |
-    mv azure-pipelines.yml 'dotnet-examples/single-example'
-    git add .
-    git commit -m "Move azure-pipelines.yml to specific folder"
-    git push origin $(Build.SourceBranch)
 - task: JFrogDotnetCore@1
   inputs:
     command: 'restore'
@@ -37,6 +31,12 @@ steps:
     artifactoryConnection: 'Cloud Instance'
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
+- checkout: self
+- script: |
+    mv azure-pipelines.yml 'dotnet-examples/single-example'
+    git add .
+    git commit -m "Move azure-pipelines.yml to specific folder"
+    git push origin $(Build.SourceBranch)
 
 
 
