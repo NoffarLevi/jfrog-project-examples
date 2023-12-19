@@ -19,8 +19,8 @@ steps:
       {
               "files": [
                {
-                 "pattern": "bash-example/*",
-                 "target": "MyArtifact/prod/$(version)",
+                 "pattern": "cpp-example/*",
+                 "target": "MyArtifact/",
                  "flat": "false"
                }
              ]
