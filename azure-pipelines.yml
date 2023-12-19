@@ -13,7 +13,7 @@ steps:
 - task: JFrogGenericArtifacts@1
   inputs:
     command: 'Upload'
-    connection: 'Cloud Instance'
+    connection: 'Test Natan'
     specSource: 'taskConfiguration'
     fileSpec: |
       {
