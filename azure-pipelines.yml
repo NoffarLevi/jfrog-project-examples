@@ -10,27 +10,24 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: JFrogDotnetCore@1
+- task: JFrogGenericArtifacts@1
   inputs:
-    command: 'restore'
-    artifactoryConnection: 'Cloud Instance'
-    targetResolveRepo: 'noffarl-azurepl-nuget'
-    rootPath: 'dotnet-examples/single-example/**/*.csproj'
-    collectBuildInfo: true
-    buildName: '$(Build.DefinitionName)'
-    buildNumber: '$(Build.BuildNumber)'
-    includeEnvVars: true
-- task: JFrogCollectIssues@1
-  inputs:
-    artifactoryConnection: 'Cloud Instance'
-    configSource: 'taskConfiguration'
-    buildName: '$(Build.DefinitionName)'
-    buildNumber: '$(Build.BuildNumber)'
-- task: JFrogPublishBuildInfo@1
-  inputs:
-    artifactoryConnection: 'Cloud Instance'
-    buildName: '$(Build.DefinitionName)'
-    buildNumber: '$(Build.BuildNumber)'
+    command: 'Upload'
+    connection: 'Cloud Instance'
+    specSource: 'taskConfiguration'
+    fileSpec: |
+      {
+              "files": [
+               {
+                 "pattern": "/msbuild-plugin-example",
+                 "target": "MyArtifact/prod/$(version)",
+                 "flat": "false"
+               }
+             ]
+           }
+    replaceSpecVars: true
+    specVars: 'version=1.0'
+    failNoOp: true
 
 
 
